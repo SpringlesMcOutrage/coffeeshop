@@ -59,6 +59,7 @@
             label1.Size = new Size(46, 15);
             label1.TabIndex = 6;
             label1.Text = "ADMIN";
+            label1.Click += label1_Click;
             // 
             // sklad
             // 

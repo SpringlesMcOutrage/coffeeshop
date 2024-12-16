@@ -23,7 +23,6 @@ namespace Shop
         {
         }
 
-        // Завантаження постачальників
         private void LoadSuppliers()
         {
             try
@@ -46,7 +45,6 @@ namespace Shop
             }
         }
 
-        // Завантаження матеріалів
         private void LoadMaterials()
         {
             try
@@ -68,7 +66,6 @@ namespace Shop
             }
         }
 
-        // Кнопка для обробки поставки
         private void buttonPostavka_Click(object sender, EventArgs e)
         {
             if (comboBoxMaterials.SelectedValue == null || comboBoxSuppliers.SelectedValue == null || string.IsNullOrWhiteSpace(textBoxQuantity.Text))
@@ -77,12 +74,9 @@ namespace Shop
                 return;
             }
 
-            // Отримуємо значення
             string materialName = comboBoxMaterials.Text;
             int supplierId = (int)comboBoxSuppliers.SelectedValue;
             string quantity = textBoxQuantity.Text;
-
-            // Попередній перегляд
             DialogResult result = MessageBox.Show(
                 $"Перевірте дані поставки:\n\nМатеріал: {materialName}\nПостачальник: {comboBoxSuppliers.Text}\nКількість: {quantity}",
                 "Попередній перегляд",
@@ -99,14 +93,12 @@ namespace Shop
             }
         }
 
-        // Збереження поставки в базу даних
         private void SavePostavka(string materialName, int supplierId, string quantity)
         {
             try
             {
                 Program.Database.openConnection();
 
-                // SQL-запит для перевірки, чи існує вже запис з цим матеріалом і постачальником
                 string checkQuery = @"
                     SELECT COUNT(*) 
                     FROM inventory 
@@ -120,7 +112,6 @@ namespace Shop
 
                 if (recordExists > 0)
                 {
-                    // Якщо запис існує, оновлюємо кількість
                     string updateQuery = @"
                         UPDATE inventory 
                         SET quantity = quantity + @quantity 
