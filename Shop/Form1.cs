@@ -4,10 +4,12 @@ namespace Shop
 {
     public partial class Form1 : Form
     {
-        class DB {
+        class DB
+        {
             MySqlConnection connection = new MySqlConnection("server=127.0.0.1; user=root; database=coffeeshop; password=");
-            public void openConnection() { 
-                if(connection.State == System.Data.ConnectionState.Closed)
+            public void openConnection()
+            {
+                if (connection.State == System.Data.ConnectionState.Closed)
                     connection.Open();
             }
             public void closeConnection()
@@ -56,7 +58,7 @@ namespace Shop
         {
             String loginUser = loginfield.Text;
             String passUser = passfield.Text;
-            
+
             DB dB = new DB();
 
             DataTable table = new DataTable();
@@ -70,14 +72,16 @@ namespace Shop
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
+
             if (table.Rows.Count > 0)
             {
+                int employeeId = Convert.ToInt32(table.Rows[0]["id_employee"]);
                 string role = table.Rows[0]["role"].ToString();
 
                 if (role == "worker")
                 {
                     this.Hide();
-                    Worker workForm = new Worker();
+                    Worker workForm = new Worker(employeeId);
                     workForm.Show();
                 }
                 else if (role == "admin")
@@ -88,7 +92,24 @@ namespace Shop
                 }
             }
             else
-                MessageBox.Show("No");
+                MessageBox.Show("Не знайдено такого користувача");
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            customer form = new customer();
+            form.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

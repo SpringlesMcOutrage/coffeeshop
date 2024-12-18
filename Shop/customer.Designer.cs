@@ -1,6 +1,6 @@
 ﻿namespace Shop
 {
-    partial class zamovlenia
+    partial class customer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,107 +28,105 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label2 = new Label();
             exitbuttonmain = new Label();
-            dataGridViewProducts = new DataGridView();
-            dataGridViewCart = new DataGridView();
-            labelTotalPrice = new Label();
             btnConfirmOrder = new Button();
-            label4 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
+            labelTotalPrice = new Label();
+            dataGridViewCart = new DataGridView();
+            dataGridViewProducts = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCart).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
             SuspendLayout();
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(-1, -1);
+            label2.Name = "label2";
+            label2.Size = new Size(112, 15);
+            label2.TabIndex = 15;
+            label2.Text = "Вхід для персоналу";
+            label2.Click += label2_Click;
             // 
             // exitbuttonmain
             // 
             exitbuttonmain.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             exitbuttonmain.AutoSize = true;
             exitbuttonmain.Font = new Font("Segoe UI", 20F);
-            exitbuttonmain.Location = new Point(772, 0);
+            exitbuttonmain.Location = new Point(770, -1);
             exitbuttonmain.Name = "exitbuttonmain";
             exitbuttonmain.Size = new Size(29, 37);
-            exitbuttonmain.TabIndex = 6;
+            exitbuttonmain.TabIndex = 14;
             exitbuttonmain.Text = "х";
             exitbuttonmain.Click += exitbuttonmain_Click;
             // 
-            // dataGridViewProducts
+            // btnConfirmOrder
             // 
-            dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProducts.Location = new Point(26, 44);
-            dataGridViewProducts.Name = "dataGridViewProducts";
-            dataGridViewProducts.Size = new Size(439, 360);
-            dataGridViewProducts.TabIndex = 7;
-            dataGridViewProducts.CellClick += dataGridViewProducts_CellClick;
-            dataGridViewProducts.CellContentClick += dataGridViewProducts_CellContentClick;
+            btnConfirmOrder.Location = new Point(620, 382);
+            btnConfirmOrder.Name = "btnConfirmOrder";
+            btnConfirmOrder.Size = new Size(136, 23);
+            btnConfirmOrder.TabIndex = 19;
+            btnConfirmOrder.Text = "Підтвердити";
+            btnConfirmOrder.UseVisualStyleBackColor = true;
+            btnConfirmOrder.Click += btnConfirmOrder_Click;
+            // 
+            // labelTotalPrice
+            // 
+            labelTotalPrice.AutoSize = true;
+            labelTotalPrice.Location = new Point(494, 315);
+            labelTotalPrice.Name = "labelTotalPrice";
+            labelTotalPrice.Size = new Size(104, 15);
+            labelTotalPrice.TabIndex = 18;
+            labelTotalPrice.Text = "Загальна вартість";
             // 
             // dataGridViewCart
             // 
             dataGridViewCart.AllowUserToAddRows = false;
             dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCart.Location = new Point(501, 44);
+            dataGridViewCart.Location = new Point(494, 45);
             dataGridViewCart.Name = "dataGridViewCart";
             dataGridViewCart.ReadOnly = true;
             dataGridViewCart.Size = new Size(287, 238);
-            dataGridViewCart.TabIndex = 8;
+            dataGridViewCart.TabIndex = 17;
             dataGridViewCart.CellClick += dataGridViewCart_CellClick;
             // 
-            // labelTotalPrice
+            // dataGridViewProducts
             // 
-            labelTotalPrice.AutoSize = true;
-            labelTotalPrice.Location = new Point(501, 314);
-            labelTotalPrice.Name = "labelTotalPrice";
-            labelTotalPrice.Size = new Size(38, 15);
-            labelTotalPrice.TabIndex = 9;
-            labelTotalPrice.Text = "label1";
+            dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProducts.Location = new Point(19, 45);
+            dataGridViewProducts.Name = "dataGridViewProducts";
+            dataGridViewProducts.Size = new Size(439, 360);
+            dataGridViewProducts.TabIndex = 16;
+            dataGridViewProducts.CellClick += dataGridViewProducts_CellClick;
             // 
-            // btnConfirmOrder
-            // 
-            btnConfirmOrder.Location = new Point(627, 381);
-            btnConfirmOrder.Name = "btnConfirmOrder";
-            btnConfirmOrder.Size = new Size(136, 23);
-            btnConfirmOrder.TabIndex = 10;
-            btnConfirmOrder.Text = "Підтвердити";
-            btnConfirmOrder.UseVisualStyleBackColor = true;
-            btnConfirmOrder.Click += btnConfirmOrder_Click;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(1, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(39, 15);
-            label4.TabIndex = 13;
-            label4.Text = "Назад";
-            label4.Click += label4_Click;
-            // 
-            // zamovlenia
+            // customer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label4);
             Controls.Add(btnConfirmOrder);
             Controls.Add(labelTotalPrice);
             Controls.Add(dataGridViewCart);
             Controls.Add(dataGridViewProducts);
+            Controls.Add(label2);
             Controls.Add(exitbuttonmain);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "zamovlenia";
+            Name = "customer";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "zamovlenia";
-            Load += zamovlenia_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
+            Text = "customer";
             ((System.ComponentModel.ISupportInitialize)dataGridViewCart).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private Label label2;
         private Label exitbuttonmain;
-        private DataGridView dataGridViewProducts;
-        private DataGridView dataGridViewCart;
-        private Label labelTotalPrice;
         private Button btnConfirmOrder;
-        private Label label4;
+        private Label labelTotalPrice;
+        private DataGridView dataGridViewCart;
+        private DataGridView dataGridViewProducts;
     }
 }

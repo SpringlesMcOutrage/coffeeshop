@@ -55,10 +55,13 @@ namespace Shop
 
         private void dataGridViewSuppliers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int supplierId = Convert.ToInt32(dataGridViewSuppliers.Rows[e.RowIndex].Cells["id_supplier"].Value);
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridViewSuppliers.Rows.Count)
+            {
+                int supplierId = Convert.ToInt32(dataGridViewSuppliers.Rows[e.RowIndex].Cells["id_supplier"].Value);
 
-            EditSupplierForm editForm = new EditSupplierForm(supplierId);
-            editForm.Show();
+                EditSupplierForm editForm = new EditSupplierForm(supplierId);
+                editForm.Show();
+            }
 
         }
 

@@ -33,7 +33,7 @@ namespace Shop
             if (string.IsNullOrEmpty(supplierName) || string.IsNullOrEmpty(supplierAddress) ||
                 string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phoneNumber))
             {
-                MessageBox.Show("Please fill in all fields.");
+                MessageBox.Show("Будь ласка заповніть всі данні.");
                 return;
             }
 
@@ -51,7 +51,7 @@ namespace Shop
 
             cmd.ExecuteNonQuery();
 
-            MessageBox.Show("Supplier added successfully.");
+            MessageBox.Show("Поставщик доданий успішно.");
 
             database.closeConnection();
             this.Close();

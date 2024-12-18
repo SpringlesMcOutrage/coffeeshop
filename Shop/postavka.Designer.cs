@@ -158,6 +158,7 @@
             Controls.Add(exitbuttonmain);
             FormBorderStyle = FormBorderStyle.None;
             Name = "postavka";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "postavka";
             contextMenuStrip2.ResumeLayout(false);
             contextMenuStrip3.ResumeLayout(false);

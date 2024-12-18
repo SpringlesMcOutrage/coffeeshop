@@ -33,6 +33,7 @@
             txtEmail = new TextBox();
             txtPhoneNumber = new TextBox();
             btnSave = new Button();
+            btnBack = new Button();
             SuspendLayout();
             // 
             // txtSupplierName
@@ -65,7 +66,7 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(358, 373);
+            btnSave.Location = new Point(518, 362);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(102, 40);
             btnSave.TabIndex = 4;
@@ -73,11 +74,22 @@
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
             // 
+            // btnBack
+            // 
+            btnBack.Location = new Point(116, 362);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(111, 40);
+            btnBack.TabIndex = 5;
+            btnBack.Text = "Скасувати";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
+            // 
             // EditSupplierForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnBack);
             Controls.Add(btnSave);
             Controls.Add(txtPhoneNumber);
             Controls.Add(txtEmail);
@@ -85,6 +97,7 @@
             Controls.Add(txtSupplierName);
             FormBorderStyle = FormBorderStyle.None;
             Name = "EditSupplierForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EditSupplierForm";
             ResumeLayout(false);
             PerformLayout();
@@ -97,5 +110,6 @@
         private TextBox txtEmail;
         private TextBox txtPhoneNumber;
         private Button btnSave;
+        private Button btnBack;
     }
 }

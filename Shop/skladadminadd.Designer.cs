@@ -92,6 +92,7 @@
             Controls.Add(comboBoxSuppliers);
             FormBorderStyle = FormBorderStyle.None;
             Name = "skladadminadd";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "skladadminadd";
             ResumeLayout(false);
             PerformLayout();

@@ -101,6 +101,7 @@
             Controls.Add(txtSupplierName);
             FormBorderStyle = FormBorderStyle.None;
             Name = "addsuplier";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "addsuplier";
             Load += addsuplier_Load;
             ResumeLayout(false);

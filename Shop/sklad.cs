@@ -12,11 +12,13 @@ namespace Shop
 {
     public partial class sklad : Form
     {
-        public sklad()
+        private int employeeId;
+
+        public sklad(int employeeId)
         {
             InitializeComponent();
             LoadInventoryData();
-
+            this.employeeId = employeeId;
         }
         private void LoadInventoryData()
         {
@@ -63,7 +65,7 @@ namespace Shop
         private void label4_Click(object sender, EventArgs e)
         {
             this.Close();
-            Worker work = new Worker();
+            Worker work = new Worker(employeeId);
             work.Show();
         }
 

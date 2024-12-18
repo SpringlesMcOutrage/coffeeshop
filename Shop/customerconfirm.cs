@@ -8,26 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using static Shop.zamovlenia;
+using static Shop.customer;
 
 namespace Shop
 {
-
-    public partial class zamovleniaconfrim : Form
+    public partial class customerconfirm : Form
     {
-        private int employeeId;
-
         private List<OrderItem> cart;
         private Form previousForm;
         private decimal bonusBalance = 0;
         private decimal bonusUsed = 0;
-
-        public zamovleniaconfrim(List<OrderItem> cart, Form previousForm, int employeeId)
+        public customerconfirm(List<OrderItem> cart, Form previousForm)
         {
             InitializeComponent();
             this.cart = cart;
             this.previousForm = previousForm;
-            this.employeeId = employeeId;
             LoadCartData();
         }
 
@@ -89,7 +84,7 @@ namespace Shop
             insertOrderCmd.Parameters.AddWithValue("@PaymentAmount", cart.Sum(item => item.Price * item.Quantity) - bonusUsed);
             insertOrderCmd.Parameters.AddWithValue("@TipAmount", 0);
             insertOrderCmd.Parameters.AddWithValue("@CustomerId", customerId);
-            insertOrderCmd.Parameters.AddWithValue("@EmployeeId", employeeId);
+            insertOrderCmd.Parameters.AddWithValue("@EmployeeId", 0);
 
             insertOrderCmd.ExecuteNonQuery();
             int orderId = (int)insertOrderCmd.LastInsertedId;
@@ -162,10 +157,10 @@ namespace Shop
             decimal totalPrice = cart.Sum(item => item.Price * item.Quantity);
             if (bonusBalance > 0)
             {
-                decimal bonusToUse = Math.Min(bonusBalance, totalPrice); 
+                decimal bonusToUse = Math.Min(bonusBalance, totalPrice);
 
                 bonusUsed = bonusToUse;
-                bonusBalance -= bonusUsed; 
+                bonusBalance -= bonusUsed;
                 labelGreeting.Text = $"Ваш бонусний баланс: {bonusBalance} грн. Знято бонусів: {bonusUsed} грн.";
 
                 decimal newTotal = totalPrice - bonusUsed;

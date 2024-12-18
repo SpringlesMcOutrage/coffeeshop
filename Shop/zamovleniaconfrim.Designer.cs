@@ -125,7 +125,7 @@
             btnSubmitOrder.TabIndex = 13;
             btnSubmitOrder.Text = "Створити замовлення";
             btnSubmitOrder.UseVisualStyleBackColor = true;
-            btnSubmitOrder.Click += this.btnSubmitOrder_Click;
+            btnSubmitOrder.Click += btnSubmitOrder_Click;
             // 
             // zamovleniaconfrim
             // 
@@ -143,6 +143,7 @@
             Controls.Add(exitbuttonmain);
             FormBorderStyle = FormBorderStyle.None;
             Name = "zamovleniaconfrim";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "zamovleniaconfrim";
             ((System.ComponentModel.ISupportInitialize)dataGridViewConfirmedOrder).EndInit();
             ResumeLayout(false);

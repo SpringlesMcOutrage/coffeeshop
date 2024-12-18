@@ -79,6 +79,7 @@
             Controls.Add(exitbuttonmain);
             FormBorderStyle = FormBorderStyle.None;
             Name = "sklad";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "sklad";
             Load += sklad_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).EndInit();

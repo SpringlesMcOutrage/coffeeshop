@@ -56,5 +56,26 @@ namespace Shop
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            workersform wrok = new workersform();
+            wrok.Show();
+            this.Hide();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            menu menu = new menu();
+            menu.Show();
+            this.Hide();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            zvit zvit = new zvit();
+            zvit.Show();
+            this.Hide();
+        }
     }
 }

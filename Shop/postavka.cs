@@ -7,11 +7,15 @@ namespace Shop
 {
     public partial class postavka : Form
     {
-        public postavka()
+        private int employeeId;
+
+        public postavka(int employeeId)
         {
             InitializeComponent();
             LoadSuppliers();
             LoadMaterials();
+            this.employeeId = employeeId;
+            this.employeeId = employeeId;
         }
 
         private void exitbuttonmain_Click(object sender, EventArgs e)
@@ -153,7 +157,7 @@ namespace Shop
         private void label4_Click(object sender, EventArgs e)
         {
             this.Close();
-            Worker work = new Worker();
+            Worker work = new Worker(employeeId);
             work.Show();
         }
     }

@@ -17,6 +17,7 @@ namespace Shop
         {
             InitializeComponent();
             LoadOrders();
+            LoadEmployees();
 
         }
         private void LoadOrders()
@@ -24,12 +25,34 @@ namespace Shop
             DB database = new DB();
             database.openConnection();
 
-            string query = "SELECT o.id_order, o.created_at, o.status, o.payment_amount, c.name AS customer_name, e.name AS employee_name " +
-                           "FROM orders o " +
-                           "JOIN customers c ON o.id_customer = c.id_customers " +
-                           "JOIN employees e ON o.id_employee = e.id_employee";
+            string query = @"
+                SELECT o.id_order, o.created_at, o.status, o.payment_amount, c.name AS customer_name, e.name AS employee_name 
+                FROM orders o 
+                JOIN customers c ON o.id_customer = c.id_customers 
+                JOIN employees e ON o.id_employee = e.id_employee";
+
+            if (dateTimePickerFrom.Value != null && dateTimePickerTo.Value != null)
+            {
+                query += " WHERE o.created_at BETWEEN @StartDate AND @EndDate";
+            }
+
+            if (comboBoxEmployees.SelectedIndex != -1)
+            {
+                query += " AND o.id_employee = @EmployeeId";
+            }
 
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, database.GetConnection());
+            if (dateTimePickerFrom.Value != null && dateTimePickerTo.Value != null)
+            {
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@StartDate", dateTimePickerFrom.Value.Date);
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@EndDate", dateTimePickerTo.Value.Date.AddDays(1).AddMilliseconds(-1)); // Додати час для кінця дня
+            }
+
+            if (comboBoxEmployees.SelectedIndex != -1)
+            {
+                dataAdapter.SelectCommand.Parameters.AddWithValue("@EmployeeId", comboBoxEmployees.SelectedValue);
+            }
+
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
 
@@ -45,6 +68,23 @@ namespace Shop
             database.closeConnection();
         }
 
+        private void LoadEmployees()
+        {
+            DB database = new DB();
+            database.openConnection();
+
+            string query = "SELECT id_employee, name FROM employees";
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(query, database.GetConnection());
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+
+            comboBoxEmployees.DataSource = dataTable;
+            comboBoxEmployees.DisplayMember = "name";
+            comboBoxEmployees.ValueMember = "id_employee";
+
+            database.closeConnection();
+        }
+
         private void exitbuttonmain_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -55,6 +95,23 @@ namespace Shop
             this.Close();
             Admin adminForm = new Admin();
             adminForm.Show();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            if (dateTimePickerFrom.Value > dateTimePickerTo.Value)
+            {
+                MessageBox.Show("Дата З не повинна бути пізніше чим дата До.");
+                return;
+            }
+
+            LoadOrders();
+
         }
     }
 }

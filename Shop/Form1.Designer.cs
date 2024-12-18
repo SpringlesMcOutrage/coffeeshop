@@ -28,18 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             button1 = new Button();
             label1 = new Label();
             loginfield = new TextBox();
             passfield = new TextBox();
             exitbuttonmain = new Label();
+            label2 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(356, 322);
+            button1.Location = new Point(464, 368);
             button1.Name = "button1";
-            button1.Size = new Size(118, 74);
+            button1.Size = new Size(161, 25);
             button1.TabIndex = 0;
             button1.Text = "Продовжити";
             button1.UseVisualStyleBackColor = true;
@@ -50,16 +54,16 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(326, 90);
+            label1.Location = new Point(58, 261);
             label1.Name = "label1";
-            label1.Size = new Size(170, 37);
+            label1.Size = new Size(198, 74);
             label1.TabIndex = 1;
-            label1.Text = "Авторизація";
+            label1.Text = "Авторизація \r\nдля персоналу";
             label1.Click += label1_Click;
             // 
             // loginfield
             // 
-            loginfield.Location = new Point(230, 197);
+            loginfield.Location = new Point(350, 243);
             loginfield.Name = "loginfield";
             loginfield.PlaceholderText = "Логін";
             loginfield.Size = new Size(385, 23);
@@ -68,7 +72,7 @@
             // 
             // passfield
             // 
-            passfield.Location = new Point(230, 265);
+            passfield.Location = new Point(350, 312);
             passfield.Name = "passfield";
             passfield.PlaceholderText = "Пароль";
             passfield.Size = new Size(385, 23);
@@ -88,11 +92,34 @@
             exitbuttonmain.Text = "х";
             exitbuttonmain.Click += exitbuttonmain_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(0, -1);
+            label2.Name = "label2";
+            label2.Size = new Size(71, 15);
+            label2.TabIndex = 16;
+            label2.Text = "Для клієнта";
+            label2.Click += label2_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(350, 43);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(385, 158);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 17;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
+            Controls.Add(label2);
             Controls.Add(exitbuttonmain);
             Controls.Add(passfield);
             Controls.Add(loginfield);
@@ -100,8 +127,10 @@
             Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -113,5 +142,7 @@
         private TextBox loginfield;
         private TextBox passfield;
         private Label exitbuttonmain;
+        private Label label2;
+        private PictureBox pictureBox1;
     }
 }

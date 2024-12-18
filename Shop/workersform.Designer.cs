@@ -1,6 +1,6 @@
 ﻿namespace Shop
 {
-    partial class skladadmin
+    partial class workersform
     {
         /// <summary>
         /// Required designer variable.
@@ -29,71 +29,71 @@
         private void InitializeComponent()
         {
             label4 = new Label();
-            dataGridViewInventory = new DataGridView();
             exitbuttonmain = new Label();
-            btnAddMaterial = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).BeginInit();
+            dataGridViewWorkers = new DataGridView();
+            btnAddWorker = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewWorkers).BeginInit();
             SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(-1, 0);
+            label4.Location = new Point(0, -2);
             label4.Name = "label4";
             label4.Size = new Size(39, 15);
-            label4.TabIndex = 14;
+            label4.TabIndex = 16;
             label4.Text = "Назад";
             label4.Click += label4_Click;
-            // 
-            // dataGridViewInventory
-            // 
-            dataGridViewInventory.AllowUserToAddRows = false;
-            dataGridViewInventory.AllowUserToDeleteRows = false;
-            dataGridViewInventory.AllowUserToOrderColumns = true;
-            dataGridViewInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewInventory.Location = new Point(109, 53);
-            dataGridViewInventory.Name = "dataGridViewInventory";
-            dataGridViewInventory.ReadOnly = true;
-            dataGridViewInventory.Size = new Size(597, 328);
-            dataGridViewInventory.TabIndex = 13;
-            dataGridViewInventory.CellContentClick += dataGridViewInventory_CellContentClick;
             // 
             // exitbuttonmain
             // 
             exitbuttonmain.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             exitbuttonmain.AutoSize = true;
             exitbuttonmain.Font = new Font("Segoe UI", 20F);
-            exitbuttonmain.Location = new Point(771, 0);
+            exitbuttonmain.Location = new Point(772, -2);
             exitbuttonmain.Name = "exitbuttonmain";
             exitbuttonmain.Size = new Size(29, 37);
-            exitbuttonmain.TabIndex = 12;
+            exitbuttonmain.TabIndex = 15;
             exitbuttonmain.Text = "х";
             exitbuttonmain.Click += exitbuttonmain_Click;
             // 
-            // btnAddMaterial
+            // dataGridViewWorkers
             // 
-            btnAddMaterial.Location = new Point(316, 405);
-            btnAddMaterial.Name = "btnAddMaterial";
-            btnAddMaterial.Size = new Size(190, 23);
-            btnAddMaterial.TabIndex = 15;
-            btnAddMaterial.Text = "Добавити матеріал";
-            btnAddMaterial.UseVisualStyleBackColor = true;
-            btnAddMaterial.Click += btnAddMaterial_Click;
+            dataGridViewWorkers.AllowUserToAddRows = false;
+            dataGridViewWorkers.AllowUserToDeleteRows = false;
+            dataGridViewWorkers.AllowUserToOrderColumns = true;
+            dataGridViewWorkers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewWorkers.Location = new Point(57, 55);
+            dataGridViewWorkers.Name = "dataGridViewWorkers";
+            dataGridViewWorkers.ReadOnly = true;
+            dataGridViewWorkers.Size = new Size(692, 321);
+            dataGridViewWorkers.TabIndex = 17;
+            dataGridViewWorkers.CellClick += dataGridViewWorkers_CellClick;
             // 
-            // skladadmin
+            // btnAddWorker
+            // 
+            btnAddWorker.Location = new Point(352, 403);
+            btnAddWorker.Name = "btnAddWorker";
+            btnAddWorker.Size = new Size(144, 23);
+            btnAddWorker.TabIndex = 18;
+            btnAddWorker.Text = "Додати працівника";
+            btnAddWorker.UseVisualStyleBackColor = true;
+            btnAddWorker.Click += btnAddWorker_Click;
+            // 
+            // workersform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnAddMaterial);
+            Controls.Add(btnAddWorker);
+            Controls.Add(dataGridViewWorkers);
             Controls.Add(label4);
-            Controls.Add(dataGridViewInventory);
             Controls.Add(exitbuttonmain);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "skladadmin";
+            Name = "workersform";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "skladadmin";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).EndInit();
+            Text = "workersform";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewWorkers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -101,8 +101,8 @@
         #endregion
 
         private Label label4;
-        private DataGridView dataGridViewInventory;
         private Label exitbuttonmain;
-        private Button btnAddMaterial;
+        private DataGridView dataGridViewWorkers;
+        private Button btnAddWorker;
     }
 }

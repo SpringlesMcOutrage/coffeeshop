@@ -60,6 +60,7 @@
             // dataGridViewSuppliers
             // 
             dataGridViewSuppliers.AllowUserToAddRows = false;
+            dataGridViewSuppliers.AllowUserToOrderColumns = true;
             dataGridViewSuppliers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSuppliers.Location = new Point(24, 59);
             dataGridViewSuppliers.Name = "dataGridViewSuppliers";
@@ -89,6 +90,7 @@
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "suppliers";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "suppliers";
             ((System.ComponentModel.ISupportInitialize)dataGridViewSuppliers).EndInit();
             ResumeLayout(false);

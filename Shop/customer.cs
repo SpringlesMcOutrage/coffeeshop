@@ -11,17 +11,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Shop
 {
-    public partial class zamovlenia : Form
+    public partial class customer : Form
     {
         public List<OrderItem> cart = new List<OrderItem>();
-        private int employeeId;
-
-
-        public zamovlenia(int employeeId)
+        public customer()
         {
             InitializeComponent();
             LoadProducts();
-            this.employeeId = employeeId;
         }
         private void LoadProducts()
         {
@@ -46,15 +42,6 @@ namespace Shop
                 Program.Database.closeConnection();
             }
         }
-        private void exitbuttonmain_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void dataGridViewProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         public class OrderItem
         {
             public int ProductId { get; set; }
@@ -62,7 +49,6 @@ namespace Shop
             public decimal Price { get; set; }
             public int Quantity { get; set; }
         }
-
         private void dataGridViewProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -189,10 +175,10 @@ namespace Shop
         {
             if (cart.Count > 0)
             {
-                zamovleniaconfrim confirmForm = new zamovleniaconfrim(cart, this, employeeId);
+                customerconfirm confirmForm = new customerconfirm(cart, this);
+
                 this.Hide();
                 confirmForm.ShowDialog();
-
             }
             else
             {
@@ -200,16 +186,16 @@ namespace Shop
             }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void exitbuttonmain_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Worker work = new Worker(employeeId);
-            work.Show();
+            Application.Exit();
         }
 
-        private void zamovlenia_Load(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
+            Form1 form = new Form1();
+            form.Show();
         }
     }
 }

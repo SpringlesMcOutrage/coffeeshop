@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Worker));
             exitbuttonmain = new Label();
             label1 = new Label();
             postavka = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            label5 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // exitbuttonmain
@@ -41,7 +45,7 @@
             exitbuttonmain.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             exitbuttonmain.AutoSize = true;
             exitbuttonmain.Font = new Font("Segoe UI", 20F);
-            exitbuttonmain.Location = new Point(770, -1);
+            exitbuttonmain.Location = new Point(772, -1);
             exitbuttonmain.Name = "exitbuttonmain";
             exitbuttonmain.Size = new Size(29, 37);
             exitbuttonmain.TabIndex = 5;
@@ -51,41 +55,45 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(383, 49);
+            label1.Font = new Font("Segoe UI", 16F);
+            label1.Location = new Point(86, 47);
             label1.Name = "label1";
-            label1.Size = new Size(45, 15);
+            label1.Size = new Size(81, 30);
             label1.TabIndex = 6;
-            label1.Text = "Worker";
+            label1.Text = "Привіт";
             label1.Click += label1_Click;
             // 
             // postavka
             // 
             postavka.AutoSize = true;
-            postavka.Location = new Point(95, 205);
+            postavka.Font = new Font("Segoe UI", 14F);
+            postavka.Location = new Point(86, 136);
             postavka.Name = "postavka";
-            postavka.Size = new Size(54, 15);
+            postavka.Size = new Size(157, 25);
             postavka.TabIndex = 7;
-            postavka.Text = "postavka";
+            postavka.Text = "Додати поставку";
             postavka.Click += label2_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(374, 205);
+            label2.Font = new Font("Segoe UI", 14F);
+            label2.Location = new Point(86, 220);
             label2.Name = "label2";
-            label2.Size = new Size(67, 15);
+            label2.Size = new Size(184, 25);
             label2.TabIndex = 8;
-            label2.Text = "zamovlenia";
+            label2.Text = "Додати замовлення";
             label2.Click += label2_Click_1;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(634, 205);
+            label3.Font = new Font("Segoe UI", 14F);
+            label3.Location = new Point(86, 367);
             label3.Name = "label3";
-            label3.Size = new Size(34, 15);
+            label3.Size = new Size(176, 25);
             label3.TabIndex = 9;
-            label3.Text = "sklad";
+            label3.Text = "Переглянути склад";
             label3.Click += label3_Click;
             // 
             // label4
@@ -98,11 +106,34 @@
             label4.Text = "Назад";
             label4.Click += label4_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 14F);
+            label5.Location = new Point(86, 292);
+            label5.Name = "label5";
+            label5.Size = new Size(245, 25);
+            label5.TabIndex = 11;
+            label5.Text = "Форма для взяття зі складу";
+            label5.Click += label5_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(436, -1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(330, 451);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 12;
+            pictureBox1.TabStop = false;
+            // 
             // Worker
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
+            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -111,8 +142,9 @@
             Controls.Add(exitbuttonmain);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Worker";
-            StartPosition = FormStartPosition.Manual;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Worker";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,5 +157,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private Label label5;
+        private PictureBox pictureBox1;
     }
 }
