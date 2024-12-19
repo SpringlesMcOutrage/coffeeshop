@@ -33,6 +33,7 @@
             dataGridViewLast24Hours = new DataGridView();
             dataGridViewLastMonth = new DataGridView();
             dataGridViewPopularProducts = new DataGridView();
+            exportButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLast24Hours).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLastMonth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPopularProducts).BeginInit();
@@ -95,11 +96,22 @@
             dataGridViewPopularProducts.Size = new Size(315, 127);
             dataGridViewPopularProducts.TabIndex = 18;
             // 
+            // exportButton
+            // 
+            exportButton.Location = new Point(103, 278);
+            exportButton.Name = "exportButton";
+            exportButton.Size = new Size(185, 55);
+            exportButton.TabIndex = 19;
+            exportButton.Text = "Експорт у PDF";
+            exportButton.UseVisualStyleBackColor = true;
+            exportButton.Click += exportButton_Click;
+            // 
             // zvit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(exportButton);
             Controls.Add(dataGridViewPopularProducts);
             Controls.Add(dataGridViewLastMonth);
             Controls.Add(dataGridViewLast24Hours);
@@ -123,5 +135,6 @@
         private DataGridView dataGridViewLast24Hours;
         private DataGridView dataGridViewLastMonth;
         private DataGridView dataGridViewPopularProducts;
+        private Button exportButton;
     }
 }

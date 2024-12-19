@@ -84,7 +84,7 @@ namespace Shop
             insertOrderCmd.Parameters.AddWithValue("@PaymentAmount", cart.Sum(item => item.Price * item.Quantity) - bonusUsed);
             insertOrderCmd.Parameters.AddWithValue("@TipAmount", 0);
             insertOrderCmd.Parameters.AddWithValue("@CustomerId", customerId);
-            insertOrderCmd.Parameters.AddWithValue("@EmployeeId", 0);
+            insertOrderCmd.Parameters.AddWithValue("@EmployeeId", 6);
 
             insertOrderCmd.ExecuteNonQuery();
             int orderId = (int)insertOrderCmd.LastInsertedId;

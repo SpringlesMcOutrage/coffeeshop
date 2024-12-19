@@ -7,7 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iText.Kernel.Pdf;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using MySql.Data.MySqlClient;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using iText.IO.Image;
+using System.Diagnostics;
+using iText.IO.Font;
+using iText.Kernel.Font;
+
 
 namespace Shop
 {
@@ -110,5 +121,73 @@ namespace Shop
             Application.Exit();
 
         }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PDF Files (*.pdf)|*.pdf";
+            saveFileDialog.Title = "Save Employee Stats as PDF";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = saveFileDialog.FileName;
+
+                using (var writer = new PdfWriter(filePath))
+                using (var pdf = new PdfDocument(writer))
+                {
+                    var document = new Document(pdf);
+
+                    string fontPath = @"C:\Windows\Fonts\arial.ttf";
+                    var font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H);
+
+                    document.SetFont(font);
+
+                    document.Add(new Paragraph("Статистика співробітників (Останні 24 години)").SetFontSize(18));
+
+                    AddDataGridViewToPdf(document, dataGridViewLast24Hours);
+
+                    document.Add(new Paragraph("\n"));
+
+                    document.Add(new Paragraph("Статистика співробітників (Останній місяць)").SetFontSize(18));
+
+                    AddDataGridViewToPdf(document, dataGridViewLastMonth);
+
+                    document.Add(new Paragraph("\n"));
+
+                    document.Add(new Paragraph("Популярні продукти").SetFontSize(18));
+
+                    AddDataGridViewToPdf(document, dataGridViewPopularProducts);
+
+                    document.Close();
+                }
+
+                MessageBox.Show("Експорт успішно завершено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void AddDataGridViewToPdf(Document document, DataGridView dataGridView)
+        {
+            var pdfTable = new Table(dataGridView.Columns.Count);
+
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                pdfTable.AddHeaderCell(new Cell().Add(new Paragraph(column.HeaderText)));
+            }
+
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        pdfTable.AddCell(new Cell().Add(new Paragraph(cell.Value.ToString())));
+                    }
+                }
+            }
+            document.Add(pdfTable);
+        }
+
+
+
     }
 }
