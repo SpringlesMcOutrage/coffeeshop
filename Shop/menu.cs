@@ -18,10 +18,19 @@ namespace Shop
             DB database = new DB();
             database.openConnection();
 
-            string query = "SELECT id_product, product_name, id_category, price, description, weight FROM products";
+            string query = @"SELECT 
+                                p.id_product AS 'ID продукту', 
+                                p.product_name AS 'Назва товару', 
+                                c.categoty_name AS 'Категорія', 
+                                p.price AS 'Ціна', 
+                                p.description AS 'Опис', 
+                                p.weight AS 'Вага' 
+                             FROM products p
+                             JOIN categories c ON p.id_category = c.id_category";
+
             if (!string.IsNullOrEmpty(searchQuery))
             {
-                query += " WHERE product_name LIKE @SearchQuery";
+                query += " WHERE p.product_name LIKE @SearchQuery";
             }
 
             MySqlCommand command = new MySqlCommand(query, database.GetConnection());
@@ -63,7 +72,7 @@ namespace Shop
         {
             if (e.RowIndex >= 0)
             {
-                int productId = Convert.ToInt32(dataGridViewProducts.Rows[e.RowIndex].Cells["id_product"].Value);
+                int productId = Convert.ToInt32(dataGridViewProducts.Rows[e.RowIndex].Cells["ID продукту"].Value);
                 menuchenge editProductForm = new menuchenge(productId);
                 editProductForm.ShowDialog();
                 LoadProducts();
@@ -75,6 +84,5 @@ namespace Shop
             string searchQuery = txtSearch.Text.Trim();
             LoadProducts(searchQuery);
         }
-
     }
 }

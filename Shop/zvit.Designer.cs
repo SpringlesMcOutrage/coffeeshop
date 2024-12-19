@@ -34,6 +34,10 @@
             dataGridViewLastMonth = new DataGridView();
             dataGridViewPopularProducts = new DataGridView();
             exportButton = new Button();
+            label1 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLast24Hours).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLastMonth).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPopularProducts).BeginInit();
@@ -42,11 +46,12 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
             label2.Location = new Point(1, 0);
             label2.Name = "label2";
-            label2.Size = new Size(39, 15);
+            label2.Size = new Size(175, 42);
             label2.TabIndex = 15;
-            label2.Text = "Назад";
+            label2.Text = "Повернутися до панелі\r\nадміністрації";
             label2.Click += label2_Click;
             // 
             // exitbuttonmain
@@ -66,7 +71,7 @@
             dataGridViewLast24Hours.AllowUserToAddRows = false;
             dataGridViewLast24Hours.AllowUserToDeleteRows = false;
             dataGridViewLast24Hours.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewLast24Hours.Location = new Point(44, 66);
+            dataGridViewLast24Hours.Location = new Point(32, 129);
             dataGridViewLast24Hours.Name = "dataGridViewLast24Hours";
             dataGridViewLast24Hours.ReadOnly = true;
             dataGridViewLast24Hours.Size = new Size(315, 127);
@@ -78,7 +83,7 @@
             dataGridViewLastMonth.AllowUserToDeleteRows = false;
             dataGridViewLastMonth.AllowUserToOrderColumns = true;
             dataGridViewLastMonth.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewLastMonth.Location = new Point(444, 66);
+            dataGridViewLastMonth.Location = new Point(444, 129);
             dataGridViewLastMonth.Name = "dataGridViewLastMonth";
             dataGridViewLastMonth.ReadOnly = true;
             dataGridViewLastMonth.Size = new Size(315, 127);
@@ -90,7 +95,7 @@
             dataGridViewPopularProducts.AllowUserToDeleteRows = false;
             dataGridViewPopularProducts.AllowUserToOrderColumns = true;
             dataGridViewPopularProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPopularProducts.Location = new Point(444, 237);
+            dataGridViewPopularProducts.Location = new Point(444, 311);
             dataGridViewPopularProducts.Name = "dataGridViewPopularProducts";
             dataGridViewPopularProducts.ReadOnly = true;
             dataGridViewPopularProducts.Size = new Size(315, 127);
@@ -98,19 +103,64 @@
             // 
             // exportButton
             // 
-            exportButton.Location = new Point(103, 278);
+            exportButton.Font = new Font("Segoe UI", 14F);
+            exportButton.Location = new Point(170, 311);
             exportButton.Name = "exportButton";
-            exportButton.Size = new Size(185, 55);
+            exportButton.Size = new Size(177, 79);
             exportButton.TabIndex = 19;
             exportButton.Text = "Експорт у PDF";
             exportButton.UseVisualStyleBackColor = true;
             exportButton.Click += exportButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(145, 66);
+            label1.Name = "label1";
+            label1.Size = new Size(202, 42);
+            label1.TabIndex = 20;
+            label1.Text = "Статистика співробітників \r\n(Останні 24 години)";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(444, 66);
+            label3.Name = "label3";
+            label3.Size = new Size(202, 42);
+            label3.TabIndex = 21;
+            label3.Text = "Статистика співробітників \r\n(Останній місяць)";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(444, 278);
+            label4.Name = "label4";
+            label4.Size = new Size(157, 21);
+            label4.TabIndex = 22;
+            label4.Text = "Популярні продукти";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 16F);
+            label5.Location = new Point(308, 22);
+            label5.Name = "label5";
+            label5.Size = new Size(184, 30);
+            label5.TabIndex = 23;
+            label5.Text = "Таблиці звітності";
             // 
             // zvit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label1);
             Controls.Add(exportButton);
             Controls.Add(dataGridViewPopularProducts);
             Controls.Add(dataGridViewLastMonth);
@@ -136,5 +186,9 @@
         private DataGridView dataGridViewLastMonth;
         private DataGridView dataGridViewPopularProducts;
         private Button exportButton;
+        private Label label1;
+        private Label label3;
+        private Label label4;
+        private Label label5;
     }
 }

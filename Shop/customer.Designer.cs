@@ -34,6 +34,9 @@
             labelTotalPrice = new Label();
             dataGridViewCart = new DataGridView();
             dataGridViewProducts = new DataGridView();
+            label1 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCart).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
             SuspendLayout();
@@ -41,9 +44,10 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
             label2.Location = new Point(-1, -1);
             label2.Name = "label2";
-            label2.Size = new Size(112, 15);
+            label2.Size = new Size(147, 21);
             label2.TabIndex = 15;
             label2.Text = "Вхід для персоналу";
             label2.Click += label2_Click;
@@ -62,9 +66,10 @@
             // 
             // btnConfirmOrder
             // 
-            btnConfirmOrder.Location = new Point(620, 382);
+            btnConfirmOrder.Font = new Font("Segoe UI", 12F);
+            btnConfirmOrder.Location = new Point(594, 355);
             btnConfirmOrder.Name = "btnConfirmOrder";
-            btnConfirmOrder.Size = new Size(136, 23);
+            btnConfirmOrder.Size = new Size(162, 50);
             btnConfirmOrder.TabIndex = 19;
             btnConfirmOrder.Text = "Підтвердити";
             btnConfirmOrder.UseVisualStyleBackColor = true;
@@ -73,7 +78,7 @@
             // labelTotalPrice
             // 
             labelTotalPrice.AutoSize = true;
-            labelTotalPrice.Location = new Point(494, 315);
+            labelTotalPrice.Location = new Point(494, 310);
             labelTotalPrice.Name = "labelTotalPrice";
             labelTotalPrice.Size = new Size(104, 15);
             labelTotalPrice.TabIndex = 18;
@@ -83,27 +88,60 @@
             // 
             dataGridViewCart.AllowUserToAddRows = false;
             dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCart.Location = new Point(494, 45);
+            dataGridViewCart.Location = new Point(494, 85);
             dataGridViewCart.Name = "dataGridViewCart";
             dataGridViewCart.ReadOnly = true;
-            dataGridViewCart.Size = new Size(287, 238);
+            dataGridViewCart.Size = new Size(287, 198);
             dataGridViewCart.TabIndex = 17;
             dataGridViewCart.CellClick += dataGridViewCart_CellClick;
             // 
             // dataGridViewProducts
             // 
             dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProducts.Location = new Point(19, 45);
+            dataGridViewProducts.Location = new Point(19, 85);
             dataGridViewProducts.Name = "dataGridViewProducts";
-            dataGridViewProducts.Size = new Size(439, 360);
+            dataGridViewProducts.Size = new Size(439, 320);
             dataGridViewProducts.TabIndex = 16;
             dataGridViewProducts.CellClick += dataGridViewProducts_CellClick;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16F);
+            label1.Location = new Point(264, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(275, 30);
+            label1.TabIndex = 20;
+            label1.Text = "Оформлення замовлення";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(19, 51);
+            label3.Name = "label3";
+            label3.Size = new Size(129, 21);
+            label3.TabIndex = 21;
+            label3.Text = "Меню продуктів";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(494, 51);
+            label4.Name = "label4";
+            label4.Size = new Size(58, 21);
+            label4.TabIndex = 22;
+            label4.Text = "Кошик";
             // 
             // customer
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label1);
             Controls.Add(btnConfirmOrder);
             Controls.Add(labelTotalPrice);
             Controls.Add(dataGridViewCart);
@@ -128,5 +166,8 @@
         private Label labelTotalPrice;
         private DataGridView dataGridViewCart;
         private DataGridView dataGridViewProducts;
+        private Label label1;
+        private Label label3;
+        private Label label4;
     }
 }

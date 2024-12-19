@@ -32,17 +32,19 @@
             exitbuttonmain = new Label();
             dataGridViewWorkers = new DataGridView();
             btnAddWorker = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewWorkers).BeginInit();
             SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(0, -2);
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(0, 0);
             label4.Name = "label4";
-            label4.Size = new Size(39, 15);
+            label4.Size = new Size(175, 42);
             label4.TabIndex = 16;
-            label4.Text = "Назад";
+            label4.Text = "Повернутися до панелі\r\nадміністрації";
             label4.Click += label4_Click;
             // 
             // exitbuttonmain
@@ -63,10 +65,10 @@
             dataGridViewWorkers.AllowUserToDeleteRows = false;
             dataGridViewWorkers.AllowUserToOrderColumns = true;
             dataGridViewWorkers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewWorkers.Location = new Point(57, 55);
+            dataGridViewWorkers.Location = new Point(57, 75);
             dataGridViewWorkers.Name = "dataGridViewWorkers";
             dataGridViewWorkers.ReadOnly = true;
-            dataGridViewWorkers.Size = new Size(692, 321);
+            dataGridViewWorkers.Size = new Size(692, 301);
             dataGridViewWorkers.TabIndex = 17;
             dataGridViewWorkers.CellClick += dataGridViewWorkers_CellClick;
             // 
@@ -80,11 +82,22 @@
             btnAddWorker.UseVisualStyleBackColor = true;
             btnAddWorker.Click += btnAddWorker_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16F);
+            label1.Location = new Point(298, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(217, 30);
+            label1.TabIndex = 19;
+            label1.Text = "Працівники закладу";
+            // 
             // workersform
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(btnAddWorker);
             Controls.Add(dataGridViewWorkers);
             Controls.Add(label4);
@@ -104,5 +117,6 @@
         private Label exitbuttonmain;
         private DataGridView dataGridViewWorkers;
         private Button btnAddWorker;
+        private Label label1;
     }
 }

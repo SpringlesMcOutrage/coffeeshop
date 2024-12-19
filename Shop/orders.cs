@@ -58,12 +58,13 @@ namespace Shop
 
             dataGridViewOrders.DataSource = dataTable;
             dataGridViewOrders.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewOrders.Columns["id_order"].HeaderText = "Order ID";
-            dataGridViewOrders.Columns["created_at"].HeaderText = "Date";
-            dataGridViewOrders.Columns["status"].HeaderText = "Status";
-            dataGridViewOrders.Columns["payment_amount"].HeaderText = "Payment Amount";
-            dataGridViewOrders.Columns["customer_name"].HeaderText = "Customer Name";
-            dataGridViewOrders.Columns["employee_name"].HeaderText = "Employee Name";
+            dataGridViewOrders.Columns["id_order"].HeaderText = "ID замовлення";
+            dataGridViewOrders.Columns["created_at"].HeaderText = "Дата";
+            dataGridViewOrders.Columns["status"].HeaderText = "Статус";
+            dataGridViewOrders.Columns["payment_amount"].HeaderText = "Сума платежу";
+            dataGridViewOrders.Columns["customer_name"].HeaderText = "Ім'я клієнта";
+            dataGridViewOrders.Columns["employee_name"].HeaderText = "Ім'я працівника";
+
 
             database.closeConnection();
         }
@@ -111,6 +112,23 @@ namespace Shop
             }
 
             LoadOrders();
+
+        }
+
+        private void comboBoxEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewOrders_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridViewOrders.Rows.Count)
+            {
+                int orderId = Convert.ToInt32(dataGridViewOrders.Rows[e.RowIndex].Cells["id_order"].Value);
+
+                editorder editForm = new editorder(orderId);
+                editForm.ShowDialog();
+            }
 
         }
     }

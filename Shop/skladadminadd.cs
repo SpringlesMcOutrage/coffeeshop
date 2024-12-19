@@ -1,21 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Shop
 {
     public partial class skladadminadd : Form
     {
-        public skladadminadd()
+        private int? materialId = null;
+
+        public skladadminadd(int? materialId = null)
         {
             InitializeComponent();
+            this.materialId = materialId;
+
             LoadSuppliers();
+
+            if (materialId.HasValue)
+            {
+                LoadMaterialData(materialId.Value);
+                btnSave.Text = "Зберегти зміни";
+            }
+            else
+            {
+                btnSave.Text = "Додати матеріал";
+            }
         }
 
         private void LoadSuppliers()
@@ -25,11 +35,42 @@ namespace Shop
                 Program.Database.openConnection();
 
                 string query = "SELECT id_supplier, supplier_name FROM suppliers";
-                DataTable supplierData = Program.Database.ExecuteQuery(query);
+                MySqlCommand cmd = new MySqlCommand(query, Program.Database.GetConnection());
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable supplierData = new DataTable();
+                adapter.Fill(supplierData);
 
                 comboBoxSuppliers.DataSource = supplierData;
                 comboBoxSuppliers.DisplayMember = "supplier_name";
                 comboBoxSuppliers.ValueMember = "id_supplier";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка: {ex.Message}");
+            }
+            finally
+            {
+                Program.Database.closeConnection();
+            }
+        }
+
+        private void LoadMaterialData(int materialId)
+        {
+            try
+            {
+                Program.Database.openConnection();
+
+                string query = "SELECT material_name, quantity, id_supplier FROM inventory WHERE id_material = @MaterialId";
+                MySqlCommand cmd = new MySqlCommand(query, Program.Database.GetConnection());
+                cmd.Parameters.AddWithValue("@MaterialId", materialId);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    txtMaterialName.Text = reader["material_name"].ToString();
+                    txtQuantity.Text = reader["quantity"].ToString();
+                    comboBoxSuppliers.SelectedValue = reader["id_supplier"];
+                }
             }
             catch (Exception ex)
             {
@@ -63,19 +104,32 @@ namespace Shop
             {
                 Program.Database.openConnection();
 
-                string query = "INSERT INTO inventory (material_name, quantity, id_supplier) " +
-                               "VALUES (@MaterialName, @Quantity, @SupplierId)";
+                string query;
+                MySqlCommand cmd = new MySqlCommand();
 
-                var parameters = new Dictionary<string, object>
+                if (materialId.HasValue)
                 {
-                    { "@MaterialName", materialName },
-                    { "@Quantity", quantity },
-                    { "@SupplierId", supplierId }
-                };
+                    query = @"UPDATE inventory 
+                              SET material_name = @MaterialName, 
+                                  quantity = @Quantity, 
+                                  id_supplier = @SupplierId 
+                              WHERE id_material = @MaterialId";
+                    cmd.Parameters.AddWithValue("@MaterialId", materialId.Value);
+                }
+                else
+                {
+                    query = @"INSERT INTO inventory (material_name, quantity, id_supplier) 
+                              VALUES (@MaterialName, @Quantity, @SupplierId)";
+                }
 
-                Program.Database.ExecuteNonQuery(query, parameters);
+                cmd.Parameters.AddWithValue("@MaterialName", materialName);
+                cmd.Parameters.AddWithValue("@Quantity", quantity);
+                cmd.Parameters.AddWithValue("@SupplierId", supplierId);
+                cmd.CommandText = query;
+                cmd.Connection = Program.Database.GetConnection();
+                cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Матеріал успішно додано.");
+                MessageBox.Show("Дані успішно збережено!");
                 this.Close();
             }
             catch (Exception ex)

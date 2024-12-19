@@ -38,6 +38,7 @@
             comboBoxEmployees = new ComboBox();
             label4 = new Label();
             btnFilter = new Button();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewOrders).BeginInit();
             SuspendLayout();
             // 
@@ -57,25 +58,27 @@
             // 
             dataGridViewOrders.AllowUserToAddRows = false;
             dataGridViewOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewOrders.Location = new Point(12, 45);
+            dataGridViewOrders.Location = new Point(12, 63);
             dataGridViewOrders.Name = "dataGridViewOrders";
             dataGridViewOrders.ReadOnly = true;
-            dataGridViewOrders.Size = new Size(591, 363);
+            dataGridViewOrders.Size = new Size(591, 345);
             dataGridViewOrders.TabIndex = 7;
+            dataGridViewOrders.CellClick += dataGridViewOrders_CellClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
             label1.Location = new Point(3, -1);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(175, 42);
             label1.TabIndex = 8;
-            label1.Text = "Назад";
+            label1.Text = "Повернутися до панелі\r\nадміністрації";
             label1.Click += label1_Click;
             // 
             // dateTimePickerFrom
             // 
-            dateTimePickerFrom.Location = new Point(630, 66);
+            dateTimePickerFrom.Location = new Point(631, 88);
             dateTimePickerFrom.Name = "dateTimePickerFrom";
             dateTimePickerFrom.Size = new Size(127, 23);
             dateTimePickerFrom.TabIndex = 9;
@@ -83,7 +86,7 @@
             // 
             // dateTimePickerTo
             // 
-            dateTimePickerTo.Location = new Point(630, 126);
+            dateTimePickerTo.Location = new Point(631, 148);
             dateTimePickerTo.Name = "dateTimePickerTo";
             dateTimePickerTo.Size = new Size(127, 23);
             dateTimePickerTo.TabIndex = 10;
@@ -92,7 +95,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(630, 45);
+            label2.Location = new Point(631, 67);
             label2.Name = "label2";
             label2.Size = new Size(14, 15);
             label2.TabIndex = 11;
@@ -101,7 +104,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(630, 108);
+            label3.Location = new Point(631, 130);
             label3.Name = "label3";
             label3.Size = new Size(22, 15);
             label3.TabIndex = 12;
@@ -111,7 +114,7 @@
             // 
             comboBoxEmployees.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxEmployees.FormattingEnabled = true;
-            comboBoxEmployees.Location = new Point(630, 179);
+            comboBoxEmployees.Location = new Point(631, 201);
             comboBoxEmployees.Name = "comboBoxEmployees";
             comboBoxEmployees.Size = new Size(127, 23);
             comboBoxEmployees.TabIndex = 13;
@@ -119,7 +122,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(630, 161);
+            label4.Location = new Point(631, 183);
             label4.Name = "label4";
             label4.Size = new Size(80, 15);
             label4.TabIndex = 14;
@@ -128,7 +131,7 @@
             // 
             // btnFilter
             // 
-            btnFilter.Location = new Point(630, 233);
+            btnFilter.Location = new Point(631, 255);
             btnFilter.Name = "btnFilter";
             btnFilter.Size = new Size(127, 23);
             btnFilter.TabIndex = 15;
@@ -136,11 +139,22 @@
             btnFilter.UseVisualStyleBackColor = true;
             btnFilter.Click += btnFilter_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 16F);
+            label5.Location = new Point(300, 11);
+            label5.Name = "label5";
+            label5.Size = new Size(137, 30);
+            label5.TabIndex = 16;
+            label5.Text = "Замовлення";
+            // 
             // orders
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
             Controls.Add(btnFilter);
             Controls.Add(label4);
             Controls.Add(comboBoxEmployees);
@@ -172,5 +186,6 @@
         private ComboBox comboBoxEmployees;
         private Label label4;
         private Button btnFilter;
+        private Label label5;
     }
 }

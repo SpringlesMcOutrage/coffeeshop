@@ -17,7 +17,6 @@ namespace Shop
         {
             InitializeComponent();
             LoadSuppliers();
-
         }
 
         private void exitbuttonmain_Click(object sender, EventArgs e)
@@ -31,6 +30,7 @@ namespace Shop
             Admin adminForm = new Admin();
             adminForm.Show();
         }
+
         private void LoadSuppliers()
         {
             DB database = new DB();
@@ -44,11 +44,13 @@ namespace Shop
 
             dataGridViewSuppliers.DataSource = dataTable;
             dataGridViewSuppliers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewSuppliers.Columns["id_supplier"].HeaderText = "Supplier ID";
-            dataGridViewSuppliers.Columns["supplier_name"].HeaderText = "Supplier Name";
-            dataGridViewSuppliers.Columns["supplier_address"].HeaderText = "Supplier Address";
-            dataGridViewSuppliers.Columns["email"].HeaderText = "Email";
-            dataGridViewSuppliers.Columns["phone_number"].HeaderText = "Phone Number";
+
+            // Зміна назв колонок на українську
+            dataGridViewSuppliers.Columns["id_supplier"].HeaderText = "ID постачальника";
+            dataGridViewSuppliers.Columns["supplier_name"].HeaderText = "Назва постачальника";
+            dataGridViewSuppliers.Columns["supplier_address"].HeaderText = "Адреса постачальника";
+            dataGridViewSuppliers.Columns["email"].HeaderText = "Електронна пошта";
+            dataGridViewSuppliers.Columns["phone_number"].HeaderText = "Номер телефону";
 
             database.closeConnection();
         }
@@ -62,7 +64,6 @@ namespace Shop
                 EditSupplierForm editForm = new EditSupplierForm(supplierId);
                 editForm.Show();
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -162,10 +162,10 @@ namespace Shop
             decimal totalPrice = cart.Sum(item => item.Price * item.Quantity);
             if (bonusBalance > 0)
             {
-                decimal bonusToUse = Math.Min(bonusBalance, totalPrice); 
+                decimal bonusToUse = Math.Min(bonusBalance, totalPrice);
 
                 bonusUsed = bonusToUse;
-                bonusBalance -= bonusUsed; 
+                bonusBalance -= bonusUsed;
                 labelGreeting.Text = $"Ваш бонусний баланс: {bonusBalance} грн. Знято бонусів: {bonusUsed} грн.";
 
                 decimal newTotal = totalPrice - bonusUsed;
@@ -176,6 +176,13 @@ namespace Shop
             {
                 MessageBox.Show("У вас немає бонусів для використання.");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addcustomer loyaltyCardForm = new addcustomer(this);
+            loyaltyCardForm.Show();
+            this.Hide();
         }
     }
 }

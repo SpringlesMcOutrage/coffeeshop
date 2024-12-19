@@ -32,17 +32,19 @@
             dataGridViewInventory = new DataGridView();
             exitbuttonmain = new Label();
             btnAddMaterial = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInventory).BeginInit();
             SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
             label4.Location = new Point(-1, 0);
             label4.Name = "label4";
-            label4.Size = new Size(39, 15);
+            label4.Size = new Size(175, 42);
             label4.TabIndex = 14;
-            label4.Text = "Назад";
+            label4.Text = "Повернутися до панелі\r\nадміністрації\r\n";
             label4.Click += label4_Click;
             // 
             // dataGridViewInventory
@@ -51,12 +53,12 @@
             dataGridViewInventory.AllowUserToDeleteRows = false;
             dataGridViewInventory.AllowUserToOrderColumns = true;
             dataGridViewInventory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewInventory.Location = new Point(109, 53);
+            dataGridViewInventory.Location = new Point(44, 79);
             dataGridViewInventory.Name = "dataGridViewInventory";
             dataGridViewInventory.ReadOnly = true;
-            dataGridViewInventory.Size = new Size(597, 328);
+            dataGridViewInventory.Size = new Size(717, 302);
             dataGridViewInventory.TabIndex = 13;
-            dataGridViewInventory.CellContentClick += dataGridViewInventory_CellContentClick;
+            dataGridViewInventory.CellClick += dataGridViewInventory_CellClick;
             // 
             // exitbuttonmain
             // 
@@ -80,11 +82,22 @@
             btnAddMaterial.UseVisualStyleBackColor = true;
             btnAddMaterial.Click += btnAddMaterial_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F);
+            label1.Location = new Point(343, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(134, 25);
+            label1.TabIndex = 16;
+            label1.Text = "Склад закладу";
+            // 
             // skladadmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(btnAddMaterial);
             Controls.Add(label4);
             Controls.Add(dataGridViewInventory);
@@ -104,5 +117,6 @@
         private DataGridView dataGridViewInventory;
         private Label exitbuttonmain;
         private Button btnAddMaterial;
+        private Label label1;
     }
 }

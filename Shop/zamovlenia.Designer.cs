@@ -34,6 +34,9 @@
             labelTotalPrice = new Label();
             btnConfirmOrder = new Button();
             label4 = new Label();
+            label1 = new Label();
+            label3 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCart).BeginInit();
             SuspendLayout();
@@ -53,9 +56,9 @@
             // dataGridViewProducts
             // 
             dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProducts.Location = new Point(26, 44);
+            dataGridViewProducts.Location = new Point(26, 90);
             dataGridViewProducts.Name = "dataGridViewProducts";
-            dataGridViewProducts.Size = new Size(439, 360);
+            dataGridViewProducts.Size = new Size(439, 314);
             dataGridViewProducts.TabIndex = 7;
             dataGridViewProducts.CellClick += dataGridViewProducts_CellClick;
             dataGridViewProducts.CellContentClick += dataGridViewProducts_CellContentClick;
@@ -64,10 +67,10 @@
             // 
             dataGridViewCart.AllowUserToAddRows = false;
             dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCart.Location = new Point(501, 44);
+            dataGridViewCart.Location = new Point(501, 90);
             dataGridViewCart.Name = "dataGridViewCart";
             dataGridViewCart.ReadOnly = true;
-            dataGridViewCart.Size = new Size(287, 238);
+            dataGridViewCart.Size = new Size(287, 192);
             dataGridViewCart.TabIndex = 8;
             dataGridViewCart.CellClick += dataGridViewCart_CellClick;
             // 
@@ -76,15 +79,16 @@
             labelTotalPrice.AutoSize = true;
             labelTotalPrice.Location = new Point(501, 314);
             labelTotalPrice.Name = "labelTotalPrice";
-            labelTotalPrice.Size = new Size(38, 15);
+            labelTotalPrice.Size = new Size(104, 15);
             labelTotalPrice.TabIndex = 9;
-            labelTotalPrice.Text = "label1";
+            labelTotalPrice.Text = "Загальна вартість";
             // 
             // btnConfirmOrder
             // 
-            btnConfirmOrder.Location = new Point(627, 381);
+            btnConfirmOrder.Font = new Font("Segoe UI", 12F);
+            btnConfirmOrder.Location = new Point(604, 349);
             btnConfirmOrder.Name = "btnConfirmOrder";
-            btnConfirmOrder.Size = new Size(136, 23);
+            btnConfirmOrder.Size = new Size(159, 55);
             btnConfirmOrder.TabIndex = 10;
             btnConfirmOrder.Text = "Підтвердити";
             btnConfirmOrder.UseVisualStyleBackColor = true;
@@ -93,18 +97,52 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
             label4.Location = new Point(1, 0);
             label4.Name = "label4";
-            label4.Size = new Size(39, 15);
+            label4.Size = new Size(173, 42);
             label4.TabIndex = 13;
-            label4.Text = "Назад";
+            label4.Text = "Повернутись у панель \r\nпрацівника";
             label4.Click += label4_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(501, 66);
+            label1.Name = "label1";
+            label1.Size = new Size(58, 21);
+            label1.TabIndex = 25;
+            label1.Text = "Кошик";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(26, 66);
+            label3.Name = "label3";
+            label3.Size = new Size(129, 21);
+            label3.TabIndex = 24;
+            label3.Text = "Меню продуктів";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 16F);
+            label2.Location = new Point(276, 6);
+            label2.Name = "label2";
+            label2.Size = new Size(275, 30);
+            label2.TabIndex = 23;
+            label2.Text = "Оформлення замовлення";
             // 
             // zamovlenia
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(btnConfirmOrder);
             Controls.Add(labelTotalPrice);
@@ -130,5 +168,8 @@
         private Label labelTotalPrice;
         private Button btnConfirmOrder;
         private Label label4;
+        private Label label1;
+        private Label label3;
+        private Label label2;
     }
 }

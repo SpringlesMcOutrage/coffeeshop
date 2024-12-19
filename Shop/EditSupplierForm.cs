@@ -52,7 +52,7 @@ namespace Shop
 
             if (string.IsNullOrEmpty(supplierName) || string.IsNullOrEmpty(supplierAddress) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phoneNumber))
             {
-                MessageBox.Show("Please fill all the fields.");
+                MessageBox.Show("Будь ласка заповніть всі поля.");
                 return;
             }
 
@@ -70,12 +70,12 @@ namespace Shop
             int rowsAffected = cmd.ExecuteNonQuery();
             if (rowsAffected > 0)
             {
-                MessageBox.Show("Supplier details updated successfully.");
+                MessageBox.Show("Постачальників успішно змінено.");
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Failed to update supplier details.");
+                MessageBox.Show("Невдалось оновити інформацію про постачальників.");
             }
 
             database.closeConnection();

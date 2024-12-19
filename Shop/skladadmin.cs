@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Shop
 {
@@ -33,7 +28,11 @@ namespace Shop
                     FROM inventory i
                     JOIN suppliers s ON i.id_supplier = s.id_supplier";
 
-                DataTable inventoryData = Program.Database.ExecuteQuery(query);
+                MySqlCommand cmd = new MySqlCommand(query, Program.Database.GetConnection());
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable inventoryData = new DataTable();
+                adapter.Fill(inventoryData);
+
                 dataGridViewInventory.DataSource = inventoryData;
                 dataGridViewInventory.Columns["id_material"].Visible = false;
                 dataGridViewInventory.AllowUserToAddRows = false;
@@ -55,7 +54,6 @@ namespace Shop
             Application.Exit();
         }
 
-
         private void label4_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -63,16 +61,22 @@ namespace Shop
             admin.Show();
         }
 
-        private void dataGridViewInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnAddMaterial_Click(object sender, EventArgs e)
         {
             skladadminadd addMaterialForm = new skladadminadd();
             addMaterialForm.FormClosed += (s, args) => LoadInventoryData();
             addMaterialForm.ShowDialog();
+        }
+
+        private void dataGridViewInventory_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int materialId = Convert.ToInt32(dataGridViewInventory.Rows[e.RowIndex].Cells["id_material"].Value);
+                skladadminadd editMaterialForm = new skladadminadd(materialId);
+                editMaterialForm.FormClosed += (s, args) => LoadInventoryData();
+                editMaterialForm.ShowDialog();
+            }
         }
     }
 }

@@ -34,17 +34,19 @@
             btnAddProduct = new Button();
             txtSearch = new TextBox();
             btnSearch = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProducts).BeginInit();
             SuspendLayout();
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
             label4.Location = new Point(0, -1);
             label4.Name = "label4";
-            label4.Size = new Size(39, 15);
+            label4.Size = new Size(175, 42);
             label4.TabIndex = 20;
-            label4.Text = "Назад";
+            label4.Text = "Повернутися до панелі\r\nадміністрації";
             label4.Click += label4_Click;
             // 
             // exitbuttonmain
@@ -65,10 +67,10 @@
             dataGridViewProducts.AllowUserToDeleteRows = false;
             dataGridViewProducts.AllowUserToOrderColumns = true;
             dataGridViewProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProducts.Location = new Point(39, 79);
+            dataGridViewProducts.Location = new Point(39, 121);
             dataGridViewProducts.Name = "dataGridViewProducts";
             dataGridViewProducts.ReadOnly = true;
-            dataGridViewProducts.Size = new Size(734, 310);
+            dataGridViewProducts.Size = new Size(734, 268);
             dataGridViewProducts.TabIndex = 21;
             dataGridViewProducts.CellClick += dataGridViewProducts_CellClick;
             // 
@@ -78,13 +80,13 @@
             btnAddProduct.Name = "btnAddProduct";
             btnAddProduct.Size = new Size(221, 23);
             btnAddProduct.TabIndex = 22;
-            btnAddProduct.Text = "Додати";
+            btnAddProduct.Text = "Додати продукт";
             btnAddProduct.UseVisualStyleBackColor = true;
             btnAddProduct.Click += btnAddProduct_Click;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(39, 38);
+            txtSearch.Location = new Point(39, 79);
             txtSearch.Name = "txtSearch";
             txtSearch.PlaceholderText = "Пошук";
             txtSearch.Size = new Size(562, 23);
@@ -92,7 +94,7 @@
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(631, 38);
+            btnSearch.Location = new Point(631, 78);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(142, 23);
             btnSearch.TabIndex = 24;
@@ -100,11 +102,22 @@
             btnSearch.UseVisualStyleBackColor = true;
             btnSearch.Click += btnSearch_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14F);
+            label1.Location = new Point(297, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(232, 25);
+            label1.TabIndex = 25;
+            label1.Text = "Перегляд меню магазину";
+            // 
             // menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
             Controls.Add(btnAddProduct);
@@ -128,5 +141,6 @@
         private Button btnAddProduct;
         private TextBox txtSearch;
         private Button btnSearch;
+        private Label label1;
     }
 }

@@ -134,11 +134,12 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
             label2.Location = new Point(0, -2);
             label2.Name = "label2";
-            label2.Size = new Size(39, 15);
+            label2.Size = new Size(212, 21);
             label2.TabIndex = 13;
-            label2.Text = "Назад";
+            label2.Text = "Вийти з панелі адміністрації";
             label2.Click += label2_Click;
             // 
             // pictureBox1

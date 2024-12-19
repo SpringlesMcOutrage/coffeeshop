@@ -172,5 +172,13 @@ namespace Shop
                 MessageBox.Show("У вас немає бонусів для використання.");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            addcustomer loyaltyCardForm = new addcustomer(this);
+            loyaltyCardForm.Show();
+            this.Hide();
+
+        }
     }
 }

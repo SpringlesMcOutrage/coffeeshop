@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -14,22 +8,45 @@ namespace Shop
     public partial class menuchenge : Form
     {
         private int? productId = null;
+
         public menuchenge(int? productId = null)
         {
             InitializeComponent();
             this.productId = productId;
 
+            LoadCategories();
+
             if (productId.HasValue)
             {
                 LoadProductData(productId.Value);
-                btnSave.Text = "Змінити";
+                btnSave.Text = "Змінити продукт";
             }
             else
             {
-                btnSave.Text = "Додати";
+                btnSave.Text = "Додати продукт";
             }
-
         }
+
+        private void LoadCategories()
+        {
+            DB database = new DB();
+            database.openConnection();
+
+            string query = "SELECT id_category, categoty_name FROM categories";
+            MySqlCommand cmd = new MySqlCommand(query, database.GetConnection());
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            DataTable categoriesTable = new DataTable();
+            categoriesTable.Load(reader);
+
+            comboBoxCategory.DataSource = categoriesTable;
+            comboBoxCategory.DisplayMember = "categoty_name";
+            comboBoxCategory.ValueMember = "id_category";
+
+            database.closeConnection();
+        }
+
         private void LoadProductData(int productId)
         {
             DB database = new DB();
@@ -40,10 +57,11 @@ namespace Shop
             cmd.Parameters.AddWithValue("@ProductId", productId);
 
             MySqlDataReader reader = cmd.ExecuteReader();
+
             if (reader.Read())
             {
                 txtProductName.Text = reader.GetString("product_name");
-                txtCategoryId.Text = reader.GetInt32("id_category").ToString();
+                comboBoxCategory.SelectedValue = reader.GetInt32("id_category");
                 txtPrice.Text = reader.GetDecimal("price").ToString();
                 txtDescription.Text = reader.GetString("description");
                 txtWeight.Text = reader.GetString("weight");
@@ -52,27 +70,17 @@ namespace Shop
             database.closeConnection();
         }
 
-        private void exitbuttonmain_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             string productName = txtProductName.Text;
-            string categoryId = txtCategoryId.Text;
+            int categoryId = Convert.ToInt32(comboBoxCategory.SelectedValue);
             decimal price = Convert.ToDecimal(txtPrice.Text);
             string description = txtDescription.Text;
             string weight = txtWeight.Text;
 
-            if (string.IsNullOrEmpty(productName) || string.IsNullOrEmpty(categoryId))
+            if (string.IsNullOrEmpty(productName))
             {
-                MessageBox.Show("Будь ласка заповніть всі поля.");
+                MessageBox.Show("Будь ласка, заповніть всі поля.");
                 return;
             }
 
@@ -119,5 +127,14 @@ namespace Shop
             database.closeConnection();
         }
 
+        private void exitbuttonmain_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

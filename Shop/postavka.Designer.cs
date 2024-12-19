@@ -42,6 +42,10 @@
             textBoxQuantity = new TextBox();
             buttonPostavka = new Button();
             label4 = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label5 = new Label();
             contextMenuStrip2.SuspendLayout();
             contextMenuStrip3.SuspendLayout();
             SuspendLayout();
@@ -103,53 +107,99 @@
             // 
             comboBoxSuppliers.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSuppliers.FormattingEnabled = true;
-            comboBoxSuppliers.Location = new Point(129, 104);
+            comboBoxSuppliers.Location = new Point(272, 104);
             comboBoxSuppliers.Name = "comboBoxSuppliers";
-            comboBoxSuppliers.Size = new Size(561, 23);
+            comboBoxSuppliers.Size = new Size(418, 23);
             comboBoxSuppliers.TabIndex = 6;
             // 
             // comboBoxMaterials
             // 
             comboBoxMaterials.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMaterials.FormattingEnabled = true;
-            comboBoxMaterials.Location = new Point(129, 168);
+            comboBoxMaterials.Location = new Point(272, 168);
             comboBoxMaterials.Name = "comboBoxMaterials";
-            comboBoxMaterials.Size = new Size(561, 23);
+            comboBoxMaterials.Size = new Size(418, 23);
             comboBoxMaterials.TabIndex = 7;
             comboBoxMaterials.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // textBoxQuantity
             // 
-            textBoxQuantity.Location = new Point(129, 246);
+            textBoxQuantity.Location = new Point(272, 246);
             textBoxQuantity.Name = "textBoxQuantity";
-            textBoxQuantity.Size = new Size(561, 23);
+            textBoxQuantity.PlaceholderText = "Введіть кількість матеріалу";
+            textBoxQuantity.Size = new Size(418, 23);
             textBoxQuantity.TabIndex = 8;
             // 
             // buttonPostavka
             // 
             buttonPostavka.Location = new Point(615, 340);
             buttonPostavka.Name = "buttonPostavka";
-            buttonPostavka.Size = new Size(75, 23);
+            buttonPostavka.Size = new Size(124, 44);
             buttonPostavka.TabIndex = 9;
-            buttonPostavka.Text = "Поставка";
+            buttonPostavka.Text = "Додати матеріал";
             buttonPostavka.UseVisualStyleBackColor = true;
             buttonPostavka.Click += buttonPostavka_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
             label4.Location = new Point(2, -1);
             label4.Name = "label4";
-            label4.Size = new Size(39, 15);
+            label4.Size = new Size(173, 42);
             label4.TabIndex = 12;
-            label4.Text = "Назад";
+            label4.Text = "Повернутись у панель \r\nпрацівника\r\n";
             label4.Click += label4_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16F);
+            label1.Location = new Point(272, 40);
+            label1.Name = "label1";
+            label1.Size = new Size(298, 30);
+            label1.TabIndex = 13;
+            label1.Text = "Додання матеріалу на склад";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(110, 102);
+            label2.Name = "label2";
+            label2.Size = new Size(111, 21);
+            label2.TabIndex = 14;
+            label2.Text = "Постачальник";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(136, 170);
+            label3.Name = "label3";
+            label3.Size = new Size(85, 21);
+            label3.TabIndex = 15;
+            label3.Text = "Матеріали";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(148, 244);
+            label5.Name = "label5";
+            label5.Size = new Size(73, 21);
+            label5.TabIndex = 16;
+            label5.Text = "Кількість";
             // 
             // postavka
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(label4);
             Controls.Add(buttonPostavka);
             Controls.Add(textBoxQuantity);
@@ -181,5 +231,9 @@
         private TextBox textBoxQuantity;
         private Button buttonPostavka;
         private Label label4;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label5;
     }
 }

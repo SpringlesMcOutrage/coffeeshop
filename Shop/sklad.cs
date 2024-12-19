@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Shop
 {
@@ -17,10 +18,33 @@ namespace Shop
         public sklad(int employeeId)
         {
             InitializeComponent();
-            LoadInventoryData();
             this.employeeId = employeeId;
+            LoadSuppliers();
+            LoadInventoryData();
         }
-        private void LoadInventoryData()
+
+        private void LoadSuppliers()
+        {
+            try
+            {
+                Program.Database.openConnection();
+
+                string query = "SELECT id_supplier, supplier_name FROM suppliers";
+                DataTable suppliersData = Program.Database.ExecuteQuery(query);
+
+                comboBoxSuppliers.DataSource = suppliersData;
+                comboBoxSuppliers.DisplayMember = "supplier_name";
+                comboBoxSuppliers.ValueMember = "id_supplier";
+
+                Program.Database.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка: {ex.Message}");
+            }
+        }
+
+        private void LoadInventoryData(int? supplierId = null)
         {
             try
             {
@@ -35,7 +59,21 @@ namespace Shop
                     FROM inventory i
                     JOIN suppliers s ON i.id_supplier = s.id_supplier";
 
-                DataTable inventoryData = Program.Database.ExecuteQuery(query);
+                if (supplierId.HasValue)
+                {
+                    query += " WHERE i.id_supplier = @SupplierId";
+                }
+
+                MySqlCommand command = new MySqlCommand(query, Program.Database.GetConnection());
+                if (supplierId.HasValue)
+                {
+                    command.Parameters.AddWithValue("@SupplierId", supplierId.Value);
+                }
+
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(command);
+                DataTable inventoryData = new DataTable();
+                dataAdapter.Fill(inventoryData);
+
                 dataGridViewInventory.DataSource = inventoryData;
                 dataGridViewInventory.Columns["id_material"].Visible = false;
                 dataGridViewInventory.AllowUserToAddRows = false;
@@ -57,11 +95,6 @@ namespace Shop
             Application.Exit();
         }
 
-        private void sklad_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void label4_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -69,9 +102,11 @@ namespace Shop
             work.Show();
         }
 
-        private void dataGridViewInventory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnFilter_Click(object sender, EventArgs e)
         {
+            int? selectedSupplierId = comboBoxSuppliers.SelectedValue as int?;
 
+            LoadInventoryData(selectedSupplierId);
         }
     }
 }

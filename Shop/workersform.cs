@@ -32,6 +32,18 @@ namespace Shop
             dataGridViewWorkers.DataSource = dataTable;
             dataGridViewWorkers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            dataGridViewWorkers.Columns["id_employee"].HeaderText = "ID працівника";
+            dataGridViewWorkers.Columns["name"].HeaderText = "Ім'я";
+            dataGridViewWorkers.Columns["surname"].HeaderText = "Прізвище";
+            dataGridViewWorkers.Columns["role"].HeaderText = "Посада";
+            dataGridViewWorkers.Columns["shift"].HeaderText = "Зміна";
+            dataGridViewWorkers.Columns["salary"].HeaderText = "Зарплата";
+            dataGridViewWorkers.Columns["birthday"].HeaderText = "Дата народження";
+            dataGridViewWorkers.Columns["phone_number"].HeaderText = "Номер телефону";
+            dataGridViewWorkers.Columns["email"].HeaderText = "Електронна пошта";
+            dataGridViewWorkers.Columns["address"].HeaderText = "Адреса";
+
+
             database.closeConnection();
         }
 

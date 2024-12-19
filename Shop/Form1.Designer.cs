@@ -54,7 +54,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(58, 261);
+            label1.Location = new Point(70, 261);
             label1.Name = "label1";
             label1.Size = new Size(198, 74);
             label1.TabIndex = 1;
@@ -95,11 +95,13 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(0, -1);
+            label2.Font = new Font("Segoe UI", 14F);
+            label2.Location = new Point(-1, -1);
             label2.Name = "label2";
-            label2.Size = new Size(71, 15);
+            label2.Size = new Size(234, 50);
             label2.TabIndex = 16;
-            label2.Text = "Для клієнта";
+            label2.Text = "Перейти до оформлення \r\nзамовлення";
+            label2.TextAlign = ContentAlignment.TopCenter;
             label2.Click += label2_Click;
             // 
             // pictureBox1
